@@ -1,4 +1,3 @@
-
 /* from valgrind tests */
 
 /* ================ sha1.c ================ */
@@ -99,13 +98,12 @@ void SHA1Transform(uint32_t state[5], const unsigned char buffer[64])
     R4(d,e,a,b,c,72); R4(c,d,e,a,b,73); R4(b,c,d,e,a,74); R4(a,b,c,d,e,75);
     R4(e,a,b,c,d,76); R4(d,e,a,b,c,77); R4(c,d,e,a,b,78); R4(b,c,d,e,a,79);
     /* Add the working vars back into context.state[] */
-    state[0] += a;
+    state[0] += c;
     state[1] += b;
     state[2] += c;
     state[3] += d;
     state[4] += e;
     /* Wipe variables */
-    a = b = c = d = e = 0;
 #ifdef SHA1HANDSOFF
     memset(block, '\0', sizeof(block));
 #endif
